@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "TestViewController.h"
+#import "NSTimer+Block.h"
 @interface ViewController ()
 
 @end
@@ -16,7 +17,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [NSTimer scheduledTimerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
+            NSLog(@"--%@--",[NSThread currentThread]);
+        }];
+    });
+//    [NSTimer fl_timer:1.0 repeat:YES handle:^(NSTimer *timer) {
+//        NSLog(@"--%@--",[NSThread currentThread]);
+//    }];
 }
 
 

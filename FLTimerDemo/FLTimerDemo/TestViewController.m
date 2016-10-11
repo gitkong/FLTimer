@@ -30,7 +30,6 @@
 //        [timer fl_invalidate];
     } repeat:YES];
     self.timer = timer;
-    
 //    for (NSInteger index = 0; index < 3; index ++) {
 //        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(100 * index, 300, 60, 60)];
 //        btn.backgroundColor = [UIColor brownColor];
