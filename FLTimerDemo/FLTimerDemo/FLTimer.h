@@ -22,7 +22,7 @@
  *
  *  @return 返回时间对象
  */
-+ (instancetype)fl_timer:(NSTimeInterval)interval handel:(void(^)())handler repeat:(BOOL)repeat;
++ (instancetype)fl_timer:(NSTimeInterval)interval handel:(void(^)(FLTimer *timer))handler repeat:(BOOL)repeat;
 /**
  *  @author 孔凡列, 16-10-11 07:10:37
  *
@@ -35,7 +35,7 @@
  *
  *  @return 返回时间对象
  */
-+ (instancetype)fl_timer:(NSTimeInterval)interval queue:(dispatch_queue_t)queue handel:(void(^)())handler repeat:(BOOL)repeat;
++ (instancetype)fl_timer:(NSTimeInterval)interval queue:(dispatch_queue_t)queue handel:(void(^)(FLTimer *timer))handler repeat:(BOOL)repeat;
 /**
  *  @author 孔凡列, 16-10-11 07:10:38
  *

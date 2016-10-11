@@ -14,7 +14,7 @@
 
 @implementation FLTimer
 
-+ (instancetype)fl_timer:(NSTimeInterval)interval queue:(dispatch_queue_t)queue handel:(void(^)())handler repeat:(BOOL)repeat{
++ (instancetype)fl_timer:(NSTimeInterval)interval queue:(dispatch_queue_t)queue handel:(void(^)(FLTimer *timer))handler repeat:(BOOL)repeat{
     FLTimer *fl_timer = [[self alloc] init];
     __block dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
     
@@ -41,11 +41,11 @@
             }
             else{
                 counter ++;
-                handler();
+                handler(fl_timer);
             }
         }
         else{
-            handler();
+            handler(fl_timer);
         }
     });
     if (timer) {
@@ -55,7 +55,7 @@
 
 }
 
-+ (instancetype)fl_timer:(NSTimeInterval)interval handel:(void(^)())handler repeat:(BOOL)repeat{
++ (instancetype)fl_timer:(NSTimeInterval)interval handel:(void(^)(FLTimer *timer))handler repeat:(BOOL)repeat{
     return [self fl_timer:interval queue:dispatch_get_main_queue() handel:handler repeat:repeat];
 }
 

@@ -18,17 +18,18 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     __weak typeof(self) weakSelf = self;
-    FLTimer *timer = [FLTimer fl_timer:1.0 handel:^{
+    FLTimer *timer = [FLTimer fl_timer:1.0 handel:^(FLTimer *timer){
         /**
          *  @author 孔凡列, 16-09-21 08:09:06
          *
          *  注意循环引用
          */
+        
         weakSelf.view.backgroundColor = [UIColor whiteColor];
         NSLog(@"----%@",[NSThread currentThread]);
+//        [timer fl_invalidate];
     } repeat:YES];
     self.timer = timer;
-    
     
 //    for (NSInteger index = 0; index < 3; index ++) {
 //        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(100 * index, 300, 60, 60)];
